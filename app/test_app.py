@@ -11,6 +11,7 @@ def client():
 
 
 def test_api(client):
-    response = client.get("/")
+    response = client.get("/api/v1/movies/recommend")
     assert response.status_code == 200
-    assert b"Flask" in response.data
+    assert response.is_json
+    assert response.get_json()[0]["title"] != ""
