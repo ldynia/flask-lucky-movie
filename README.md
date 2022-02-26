@@ -38,8 +38,8 @@ docker stop movie-app
 
 ```bash
 docker run --name app-debug --rm -d -p 80:8080 -w /app -v $PWD/app:/app python:3.9.5-alpine sleep 1d
-pip install --upgrade pip --requirement /app/requirements.txt
 docker exec -it app-debug ash
+pip install --upgrade pip --requirement /app/requirements.txt
 
 export PORT=8080
 export HOST=0.0.0.0
