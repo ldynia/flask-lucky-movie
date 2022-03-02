@@ -10,8 +10,8 @@ git clone https://github.com/ldynia/flask-lucky-movie.git
 cd flask-lucky-movie
 
 # Building and running docker container
-docker build --tag flask-lucky-movie --build-arg FLASK_DEBUG=True .
-docker run --detach --name movie-app --publish 80:8080 --rm flask-lucky-movie
+docker build --tag movie-app --build-arg FLASK_DEBUG=True .
+docker run --detach --name movie-app --publish 80:8080 --rm movie-app
 docker ps
 ```
 ## API
@@ -45,4 +45,13 @@ export PORT=8080
 export HOST=0.0.0.0
 export FLASK_APP=/app/run.py
 flask run --host=$HOST --port=$PORT
+```
+
+# Redis
+
+```bash
+docker network create app-backend
+docker run --detach --name redis-db --network app-backend -d-rm redis redis-server --save 60 1 --loglevel warning
+docker run --detach --name movie-app --publish 80:8080 --rm --network app-backend movie-app
+docker exec movie-app nc -zvw 1 redis-db 6379
 ```
