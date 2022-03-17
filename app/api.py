@@ -23,7 +23,7 @@ def recommend():
     sherlock = RecoMenda(movies, request.args)
     recommendation = sherlock.recommend()
 
-    count(recommendation[0]['title'])
+    # count(recommendation[0]['title'])
 
     return jsonify(recommendation)
 

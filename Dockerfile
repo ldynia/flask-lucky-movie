@@ -1,12 +1,18 @@
 FROM python:3.9.5-alpine
 
-# Setup environment variables
-ENV PORT=8080 \
+# Setup build args
+ARG FLASK_APP=/app/run.py \
+    FLASK_DEBUG=False \
     HOST=0.0.0.0 \
-    PYTHONUNBUFFERED=True \
-    FLASK_APP=/app/run.py
-ARG FLASK_DEBUG=False
-ENV FLASK_DEBUG=$FLASK_DEBUG
+    PORT=8080 \
+    PYTHONUNBUFFERED=True
+
+# Setup environment variables
+ENV FLASK_APP=$FLASK_APP \
+    FLASK_DEBUG=$FLASK_DEBUG \
+    HOST=$HOST \
+    PORT=$PORT \
+    PYTHONUNBUFFERED=$PYTHONUNBUFFERED
 
 # Setup file system
 WORKDIR /app
