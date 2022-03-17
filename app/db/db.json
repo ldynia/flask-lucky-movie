@@ -4,19 +4,22 @@
     "year": 1993,
     "rating": 8.0,
     "directors": ["Harold Ramis"],
-    "stars": ["Bill Murray", "Andie MacDowell", "Chris Elliott", "Punxsutawney Phil"]
+    "stars": ["Bill Murray", "Andie MacDowell", "Chris Elliott", "Punxsutawney Phil"],
+    "poster": "https://flxt.tmsimg.com/assets/p14569_p_v8_ay.jpg"
 }, {
     "title": "Kingpin",
     "genre": ["comedy", "sport"],
     "year": 1996,
     "rating": 6.9,
     "director": ["Bobby Farrelly", "Peter Farrelly"],
-    "stars": ["Woody Harrelson", "Randy Quaid", "Bill Murray"]
+    "stars": ["Woody Harrelson", "Randy Quaid", "Bill Murray"],
+    "poster": "https://cdn.shopify.com/s/files/1/1416/8662/products/kingpin_1996_original_film_art_5000x.jpg"
 }, {
     "title": "The Bridges of Madison County",
     "genre": ["drama", "romance"],
     "year": 1995,
     "rating": 7.6,
     "director": ["Clint Eastwood"],
-    "stars": ["Clint Eastwood", "Meryl Streep"]
+    "stars": ["Clint Eastwood", "Meryl Streep"],
+    "poster": "https://images.moviesanywhere.com/422d2f25f76675f3e9a18d05527c5c21/e8179d40-2b09-4fe4-b210-8f7205b88cb0.jpg"
 }]
