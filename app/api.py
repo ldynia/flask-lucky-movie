@@ -23,8 +23,6 @@ def recommend():
     sherlock = RecoMenda(movies, request.args)
     recommendation = sherlock.recommend()
 
-    # count(recommendation[0]['title'])
-
     return jsonify(recommendation)
 
 
@@ -40,7 +38,7 @@ def alive():
 
 @app.route("/healthz/ready", methods=["GET"])
 def ready():
-    DB_REDIS_HOST = os.environ.get('DB_REDIS_HOST', 'redis-dbx')
+    DB_REDIS_HOST = os.environ.get('DB_REDIS_HOST', 'redis')
     DB_REDIS_PORT = os.environ.get('DB_REDIS_PORT', 6379)
     try:
         soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -49,11 +47,3 @@ def ready():
         return jsonify()
     except:
         return jsonify(), 500
-
-
-def count(key):
-    counter = red.get(key)
-    if not counter:
-        red.set(key, 0)
-    else:
-        red.set(key, int(counter) + 1)

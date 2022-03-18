@@ -51,7 +51,7 @@ flask run --host=$HOST --port=$PORT
 
 ```bash
 docker network create app-backend
-docker run --detach --name redis-db --network app-backend -d-rm redis redis-server --save 60 1 --loglevel warning
+docker run --detach --name redis --network app-backend --rm redis redis-server --save 60 1 --loglevel warning
 docker run --detach --name movie-app --publish 80:8080 --rm --network app-backend movie-app
-docker exec movie-app nc -zvw 1 redis-db 6379
+docker exec movie-app nc -zvw 1 redis 6379
 ```
