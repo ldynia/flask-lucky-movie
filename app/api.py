@@ -5,7 +5,6 @@ from flask import jsonify
 from flask import request
 
 from . import app
-from . import red
 from . import read_data
 from . import RecoMenda
 
@@ -24,11 +23,6 @@ def recommend():
     recommendation = sherlock.recommend()
 
     return jsonify(recommendation)
-
-
-@app.route("/api/v1/recommendations/count", methods=["GET"])
-def counter():
-    return jsonify({title: red.get(title) for title in red.keys()})
 
 
 @app.route("/healthz/alive", methods=["GET"])
