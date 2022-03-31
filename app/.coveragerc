@@ -1,0 +1,11 @@
+[run]
+    branch = True
+    source = .
+    omit = run.py
+
+[report]
+    fail_under = 74
+    precision = 1
+    show_missing = True
+    skip_covered = False
+    sort = Cover
