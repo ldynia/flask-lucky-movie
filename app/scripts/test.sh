@@ -6,20 +6,19 @@ RED='\033[0;31m'
 BLUE='\e[36m'
 YELLOW='\033[0;33m'
 EXIT_CODE=0
+COVERAGE_DIR=/tmp/coverage
 
-# SetUp file system
-export COVERAGE_DIR=/tmp/coverage
+# Global vars
 export COVERAGE_FILE=/tmp/coverage/.coverage
 
+# SetUp file system
 mkdir -p $COVERAGE_DIR
 rm -rf $COVERAGE_DIR/*
-
-printf "${YELLOW}Testing Started${NC}\n"
 
 # Run tests via test coverage
 coverage run -m pytest -p no:cacheprovider > $COVERAGE_DIR/pytest.out 2>&1
 coverage report 2>&1 | tee $COVERAGE_DIR/report.out
-coverage html --data-file=$COVERAGE_DIR/.coverage --directory=$COVERAGE_DIR
+coverage html --data-file=$COVERAGE_DIR/.coverage --directory=$COVERAGE_DIR/htmlcov
 coverage xml --data-file=$COVERAGE_DIR/.coverage -o $COVERAGE_DIR/coverage.xml
 
 # Check if unit tests failed!
@@ -40,7 +39,5 @@ if [ "$COVERAGE_RESULT" = "failure" ]; then
     printf "${RED}ERROR:${NC} ${YELLOW}Test coverage result $RETURNED_COVERAGE percent is smaller than expected coverage score $EXPECTED_COVERAGE percent${NC}\n"
     EXIT_CODE=1
 fi
-
-printf "${YELLOW}Testing Ended${NC}\n"
 
 exit $EXIT_CODE
