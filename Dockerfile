@@ -25,8 +25,8 @@ RUN pip install --upgrade pip --requirement /app/requirements.txt
 # Indicate which port to expose
 EXPOSE $PORT
 
-# Setting up default process owner and group
-USER nobody:nogroup
+# # Setting up default process owner and group
+# USER nobody:nogroup
 
 # Start app server
 CMD flask run --host=$HOST --port=$PORT
